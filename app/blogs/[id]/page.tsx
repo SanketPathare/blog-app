@@ -10,13 +10,12 @@ interface BlogData {
   id: number;
   title: string;
   description: string;
-
   date: number;
   category: string;
   author: string;
 }
 
-const BlogPage: React.FC<{ params: { id: string } }> = ({ params }) => {
+const BlogPage = ({ params }) => {
   const [data, setData] = useState<BlogData | null>(null);
 
   const fetchBlogData = async () => {

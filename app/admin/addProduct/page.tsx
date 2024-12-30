@@ -17,7 +17,7 @@ const Page = () => {
   });
 
   // Data Upload Handler
-  const onChangeHandler = (event) => {
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const name = event.target.name;
     const value = event.target.value;
     setData((data) => ({ ...data, [name]: value }));
@@ -25,7 +25,7 @@ const Page = () => {
   };
 
   // submit Handler
-  const onSubmitHandler = async (e) => {
+  const onSubmitHandler = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("title", data.title);

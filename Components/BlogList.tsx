@@ -1,10 +1,9 @@
-
 import BlogItem from "./BlogItem";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const BlogList = () => {
-  const [menu, SetMenu] = useState("All");
+  const [menu] = useState("All");
   const [blogs, setBlogs] = useState([]);
 
   const fetchBlogs = async () => {
@@ -12,12 +11,12 @@ const BlogList = () => {
     setBlogs(response.data.blogs);
     console.log(response.data.blogs);
   };
-   useEffect(()=>{
+  useEffect(() => {
     fetchBlogs();
-   },[])
+  }, []);
 
   return (
-    <div className="">
+    <div className="mb-10">
       {/* <div className="flex justify-center gap-6 my-10">
         <button
           onClick={() => SetMenu("All")}
@@ -64,8 +63,6 @@ const BlogList = () => {
         {blogs
           .filter((item) => {
             return menu === "All" ? true : item.category === menu;
-
-
           })
           .map((item, index) => {
             return (
