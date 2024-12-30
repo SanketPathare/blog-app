@@ -7,11 +7,13 @@ interface SidebarItemProps {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   text: string;
   onClick: React.MouseEventHandler<HTMLAnchorElement>;
+ 
 }
 const SidebarItem: React.FC<SidebarItemProps> = ({
   href,
   icon: Icon,
   text,
+
   onClick,
 }) => (
   // Add your own CSS styles here to customize the sidebar item appearance
