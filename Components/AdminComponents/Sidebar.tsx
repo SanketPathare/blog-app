@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Menu, X, PenSquare, PlusCircle, ScrollText } from "lucide-react";
 
-const SidebarItem = ({ href, icon: Icon, text, onClick }) => (
+const SidebarItem: React.FC<{ href: string; icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; text: string; onClick: React.MouseEventHandler<HTMLAnchorElement> }> = ({ href, icon: Icon, text, onClick }) => (
   // Add your own CSS styles here to customize the sidebar item appearance
   <a href={href} onClick={onClick} className="block no-underline text-inherit">
     <div className="flex items-center border  border-black gap-3 font-medium px-3 py-2 bg-white hover:bg-black hover:text-white mb-5 transition-colors duration-200">
