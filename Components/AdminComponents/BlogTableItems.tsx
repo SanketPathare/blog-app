@@ -1,14 +1,13 @@
 import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const BlogTableItem = ({
-  authorImg,
-  title,
-  author,
-  date,
-  deleteBlog,
-  mongoId,
-}) => {
+const BlogTableItem: React.FC<{
+  title: string;
+  author: string;
+  date: string;
+  deleteBlog: (id: string) => void;
+  mongoId: string;
+}> = ({ title, author, date, deleteBlog, mongoId }) => {
   const BlogDate = new Date(date);
   return (
     <tr className="bg-white border-b">
