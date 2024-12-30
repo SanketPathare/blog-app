@@ -3,7 +3,7 @@ import SubsTableItem from '@/Components/AdminComponents/SubsTableItem'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
-const page = () => {
+const Page = () => {
   const [emails, setEmails] = useState([]);
 
   // fetch all the emails from the server
@@ -64,4 +64,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
