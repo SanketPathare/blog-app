@@ -13,11 +13,14 @@ const Page = () => {
     description: "",
     category: "",
     author: "",
-    authorImg: "/author_img.png",
   });
 
   // Data Upload Handler
-  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const onChangeHandler = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const name = event.target.name;
     const value = event.target.value;
     setData((data) => ({ ...data, [name]: value }));
@@ -25,28 +28,29 @@ const Page = () => {
   };
 
   // submit Handler
-  const onSubmitHandler = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const onSubmitHandler = async (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("description", data.description);
     formData.append("category", data.category);
     formData.append("author", data.author);
-    formData.append("authorImg", data.authorImg);
     formData.append("image", image);
     const response = await axios.post("/api/blog", formData);
 
     if (response.data.success) {
-
       toast.success(response.data.msg);
-       // Reset form fields after successful submission
+      // Reset form fields after successful submission
       setImage(false);
       setData({
         title: "",
         description: "",
         category: "Select category",
         author: "",
-        authorImg: "/author_img.png",
       });
     } else {
       toast.error("Error");
