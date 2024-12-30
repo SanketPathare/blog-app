@@ -2,26 +2,13 @@
 import React, { useState } from "react";
 import { Menu, X, PenSquare, PlusCircle, ScrollText } from "lucide-react";
 
-interface SidebarItemProps {
-  href: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  text: string;
-  onClick: React.MouseEventHandler<HTMLAnchorElement>;
- 
-}
-const SidebarItem: React.FC<SidebarItemProps> = ({
-  href,
-  icon: Icon,
-  text,
-
-  onClick,
-}) => (
+const SidebarItem = ({ href, icon: Icon, text, onClick }) => (
   // Add your own CSS styles here to customize the sidebar item appearance
   <a href={href} onClick={onClick} className="block no-underline text-inherit">
     <div className="flex items-center border  border-black gap-3 font-medium px-3 py-2 bg-white hover:bg-black hover:text-white mb-5 transition-colors duration-200">
       <h1 className="flex justify-center items-center gap-4 w-full">
         <span className="text-2xl">
-          <Icon size={24} />
+          <Icon/>
         </span>
         {text}
       </h1>
@@ -90,12 +77,12 @@ const Sidebar = () => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 transition-transform duration-300 ease-in-out z-50`}
       >
-          {/* Desktop Logo - Hidden on Mobile */}
+        {/* Desktop Logo - Hidden on Mobile */}
         <div className="flex flex-col bg-slate-100 border h-full">
           <div className="hidden lg:block px-2 sm:pl-14 py-3 border-b">
-          <h1 className="text-2xl lg:text-3xl font-semibold w-[130px] sm:w-auto ">
-            Blogs App
-          </h1>
+            <h1 className="text-2xl lg:text-3xl font-semibold w-[130px] sm:w-auto ">
+              Blogs App
+            </h1>
           </div>
 
           {/* Sidebar Content */}
