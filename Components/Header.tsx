@@ -7,7 +7,7 @@ const Header = () => {
   const [email, setEmail] = useState("");
 
   // Submit handler for  the email
-  const onSubmitHandler = async (e) => {
+  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("email", email);
