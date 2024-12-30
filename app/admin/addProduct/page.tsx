@@ -6,13 +6,19 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 const Page = () => {
-  const [image, setImage] = useState(null); // Ensure proper type
+  const [image, setImage] = useState<File | null>(null); // Ensure proper type
   const [data, setData] = useState({
     title: "",
     description: "",
     category: "",
     author: "",
   });
+ 
+  // File Upload Handler
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null; // Handle File | undefined | null
+    setImage(file); // This will now work correctly
+  };
 
   // Data Upload Handler
   const onChangeHandler = (
@@ -78,13 +84,10 @@ const Page = () => {
         />
       </label>
       <input
-       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-        setImage(e.target.files?.[0] || null)
-      }
-      
+        onChange={handleFileChange}
         type="file"
         id="image"
-        accept="image/*" // Restrict file type
+        accept="image/*" // Restrict to images
         hidden
         required
       />
