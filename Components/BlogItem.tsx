@@ -1,13 +1,13 @@
 
-import Image, { StaticImageData } from "next/image"
+
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa"
 
 interface BlogItemProps {
     title: string;
     description: string;
+    image: string; 
     category: string;
-    image:  StaticImageData; 
     id: string;
   }
   
