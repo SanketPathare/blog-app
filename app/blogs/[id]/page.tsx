@@ -16,8 +16,6 @@ interface BlogData {
   image: string;
 }
 
-
-
 const BlogPage = ({ params }) => {
   const [data, setData] = useState<BlogData | null>(null);
 
