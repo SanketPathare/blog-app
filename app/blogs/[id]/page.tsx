@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 // import { FaArrowRight } from "react-icons/fa";
 
 interface BlogData {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   date: number;
@@ -15,17 +15,17 @@ interface BlogData {
   author: string;
   image: string;
 }
-interface BlogPageProps {
-  params: {
-    id: string;
-  };
-}
-const BlogPage = ({ params }: BlogPageProps) => {
+
+
+type tParams = Promise<{ slug: string[] }>;
+
+const BlogPage =  ({ params }: { params: tParams }) => { 
+
   const [data, setData] = useState<BlogData | null>(null);
 
   const fetchBlogData = async () => {
     const response = await axios.get("/api/blog", {
-      params: { id: params.id },
+      params: { id: params },
     });
     setData(response.data);
   };
