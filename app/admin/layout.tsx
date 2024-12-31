@@ -2,7 +2,9 @@ import Sidebar from "@/Components/AdminComponents/Sidebar";
 import { FaCircleUser } from "react-icons/fa6";
 import { ToastContainer} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-export default function Layout({ children }) {
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+
   return (
     <>
       <div className="flex">

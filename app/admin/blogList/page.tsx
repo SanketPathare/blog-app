@@ -4,8 +4,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
+type BlogType = {
+  _id: string;
+  title: string;
+  author: string;
+  authorImg: string;
+  date: string;
+  // Add other properties as needed
+};
+
 const Page = () => {
-  const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState<BlogType[]>([]);
 
   // fetch all blogs from the server
   const fetchBlogs = async () => {
@@ -14,7 +23,7 @@ const Page = () => {
   };
 
   // delete a blog from the server
-  const deleteBlog = async (mongoId) => {
+  const deleteBlog = async (mongoId: string) => {
     const response = await axios.delete("/api/blog", {
       params: {
         id: mongoId,
@@ -58,7 +67,6 @@ const Page = () => {
                   mongoId={item._id}
                   title={item.title}
                   author={item.author}
-                  authorImg={item.authorImg}
                   date={item.date}
                   deleteBlog={deleteBlog}
                 />
