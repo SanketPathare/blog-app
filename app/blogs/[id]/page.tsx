@@ -7,15 +7,20 @@ import { useEffect, useState } from "react";
 // import { FaArrowRight } from "react-icons/fa";
 
 interface BlogData {
-  id: number;
+  _id: string;
   title: string;
   description: string;
   date: number;
   category: string;
   author: string;
+  image: string;
 }
-
-const BlogPage = ({ params }) => {
+interface BlogPageProps {
+  params: {
+    id: string;
+  };
+}
+const BlogPage = ({ params }: BlogPageProps) => {
   const [data, setData] = useState<BlogData | null>(null);
 
   const fetchBlogData = async () => {

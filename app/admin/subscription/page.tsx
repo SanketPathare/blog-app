@@ -3,12 +3,21 @@ import SubsTableItem from '@/Components/AdminComponents/SubsTableItem'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
+
+interface Email {
+  _id: string;
+  email: string;
+  date: string; 
+}
+
 const Page = () => {
-  const [emails, setEmails] = useState([]);
+  const [emails, setEmails] = useState<Email[]>([]);
 
   // fetch all the emails from the server
   const fetchEmails = async () => {
-    const response = await axios.get("/api/email");
+    const response = await axios.get<
+      { emails: Email[] } 
+    >("/api/email");
     setEmails(response.data.emails);
   };
 
@@ -32,6 +41,7 @@ const Page = () => {
   useEffect(() => {
     fetchEmails();
   }, []);
+
   return (
     <>
       <div className="flex-1 pt-5 px-5 sm:pt-12 sm:pl-16 ">
@@ -43,7 +53,7 @@ const Page = () => {
                 <th scope="col" className="px-6 py-3">
                   Email Subscription
                 </th>
-                <th scope="col" className="  px-6 py-3">
+                <th scope="col" className=" px-6 py-3">
                   Date
                 </th>
                 <th scope="col" className="px-6 py-3">
@@ -52,10 +62,17 @@ const Page = () => {
               </tr>
             </thead>
             <tbody>
-              
-               {emails.map((item,index)=>{
-                return <SubsTableItem key={index} mongoId={item._id} deleteEmail={deleteEmail} email={item.email} date={item.date}/>;
-            })} 
+              {emails.map((item, index) => {
+                return (
+                  <SubsTableItem
+                    key={index}
+                    mongoId={item._id}
+                    deleteEmail={deleteEmail}
+                    email={item.email}
+                    date={item.date}
+                  />
+                );
+              })}
             </tbody>
           </table>
         </div>
