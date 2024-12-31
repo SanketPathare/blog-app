@@ -17,10 +17,8 @@ interface BlogData {
 }
 
 
-type tParams = Promise<{ slug: string[] }>;
 
-const BlogPage =  ({ params }: { params: tParams }) => { 
-
+const BlogPage = ({ params }) => {
   const [data, setData] = useState<BlogData | null>(null);
 
   const fetchBlogData = async () => {
