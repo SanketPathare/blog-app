@@ -13,7 +13,7 @@ const Page = () => {
   };
 
   // delete a specific email
-  const deleteEmail = async (mongoId) => {
+  const deleteEmail = async (mongoId: string) => {
     const response = await axios.delete("/api/email", {
       params: {
         id: mongoId,
